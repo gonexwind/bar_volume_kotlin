@@ -1,0 +1,2 @@
+rootProject.name = "Bar Volume"
+include ':app'
