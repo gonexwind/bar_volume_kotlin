@@ -30,11 +30,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         if (v?.id == R.id.btn_calculate) {
             val inputLength = edtLength.text.toString().trim()
-            val inputtWidth = edtWidth.text.toString().trim()
+            val inputWidth = edtWidth.text.toString().trim()
             val inputHeight = edtHeight.text.toString().trim()
 
-            val volume = inputLength.toDouble() * inputtWidth.toDouble() * inputHeight.toDouble()
-            tvResult.text = volume.toString()
+            var isFilled = false
+
+            when (!isFilled) {
+                inputLength.isEmpty() -> {
+                    isFilled = true
+                    edtLength.error = "Tak boleh kosong"
+                }
+                inputWidth.isEmpty() -> {
+                    isFilled = true
+                    edtWidth.error = "Tak boleh kosong"
+                }
+                inputHeight.isEmpty() -> {
+                    isFilled = true
+                    edtHeight.error = "Tak boleh kosong"
+                }
+                else -> {
+                    val volume =
+                        inputLength.toDouble() * inputWidth.toDouble() * inputHeight.toDouble()
+                    tvResult.text = volume.toString()
+                }
+            }
         }
     }
 
